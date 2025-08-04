@@ -46,3 +46,29 @@ input, button {
   padding: 10px;
   font-size: 16px;
 }
+body.dark {
+  background-color: #121212;
+  color: #f1f1f1;
+}
+
+body.dark .chatbox {
+  background-color: #1e1e1e;
+  border-color: #333;
+}
+
+body.dark .user {
+  background-color: #005f2f;
+  color: #fff;
+}
+
+body.dark .bot {
+  background-color: #333;
+  color: #fff;
+}
+
+body.dark input,
+body.dark button {
+  background-color: #222;
+  color: #fff;
+  border: 1px solid #444;
+}

@@ -26,3 +26,6 @@ function handleKey(event) {
     respond();
   }
 }
+function toggleDarkMode() {
+  document.body.classList.toggle("dark");
+}
