@@ -100,3 +100,17 @@ function handleKey(event) {
 function toggleDarkMode() {
   document.body.classList.toggle("dark");
 }
+function downloadChat() {
+  const messages = document.querySelectorAll('.message');
+  let chatText = '';
+
+  messages.forEach(msg => {
+    chatText += msg.textContent + '\n';
+  });
+
+  const blob = new Blob([chatText], { type: 'text/plain' });
+  const link = document.createElement('a');
+  link.download = 'chat-history.txt';
+  link.href = URL.createObjectURL(blob);
+  link.click();
+}
