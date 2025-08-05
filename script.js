@@ -44,13 +44,22 @@ function getBotReply(message) {
   if (msg.includes("help")) return "I'm here to help! Just ask me anything.";
   return "I am just a simple bot. You said — " + message;
 }
+function convertEmojis(text) {
+  return text
+    .replace(/:\)/g, "🙂")
+    .replace(/:D/g, "😄")
+    .replace(/:\(/g, "😢")
+    .replace(/<3/g, "❤️")
+    .replace(/:o/gi, "😮")
+    .replace(/:p/gi, "😛");
+}
 
 
 function addMessage(text, sender) {
   const chatbox = document.getElementById("chatbox");
   const msgDiv = document.createElement("div");
   msgDiv.className = "message " + sender;
-  msgDiv.textContent = text;
+  msgDiv.innerHTML = convertEmojis(text);
   chatbox.appendChild(msgDiv);
   chatbox.scrollTop = chatbox.scrollHeight;
 }
