@@ -1,3 +1,10 @@
+function detectSystemDarkMode() {
+  const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+  if (prefersDark) {
+    document.body.classList.add('dark');
+  }
+}
+
 function respond() {
   const input = document.getElementById("userInput");
   const message = input.value.trim();
