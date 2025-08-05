@@ -3,14 +3,48 @@ function respond() {
   const message = input.value.trim();
   if (message === "") return;
 
+  // Show user message
   addMessage("You: " + message, "user");
   input.value = "";
 
-  // Simulate typing...
+  // Show "typing..." message
+  const typingId = "typing-indicator";
+  addTypingIndicator(typingId);
+
+  // After delay, remove typing and show bot reply
   setTimeout(() => {
-    addMessage("🤖 Chatbot: I am a simple bot. You said — " + message, "bot");
-  }, 500);
+    removeTypingIndicator(typingId);
+    const reply = getBotReply(message);
+    addMessage("🤖 Chatbot: " + reply, "bot");
+  }, 1000);
 }
+
+// Add a temporary typing message
+function addTypingIndicator(id) {
+  const chatbox = document.getElementById("chatbox");
+  const typingDiv = document.createElement("div");
+  typingDiv.className = "message bot";
+  typingDiv.id = id;
+  typingDiv.textContent = "🤖 Bot is typing...";
+  chatbox.appendChild(typingDiv);
+  chatbox.scrollTop = chatbox.scrollHeight;
+}
+
+// Remove it when reply is ready
+function removeTypingIndicator(id) {
+  const typingDiv = document.getElementById(id);
+  if (typingDiv) typingDiv.remove();
+}
+
+// Smart reply system (basic)
+function getBotReply(message) {
+  const msg = message.toLowerCase();
+  if (msg.includes("hello") || msg.includes("hi")) return "Hello! How can I assist you?";
+  if (msg.includes("bye")) return "Goodbye! Have a great day!";
+  if (msg.includes("help")) return "I'm here to help! Just ask me anything.";
+  return "I am just a simple bot. You said — " + message;
+}
+
 
 function addMessage(text, sender) {
   const chatbox = document.getElementById("chatbox");
