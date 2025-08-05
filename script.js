@@ -39,11 +39,32 @@ function removeTypingIndicator(id) {
 // Smart reply system (basic)
 function getBotReply(message) {
   const msg = message.toLowerCase();
+
+  // Greetings
   if (msg.includes("hello") || msg.includes("hi")) return "Hello! How can I assist you?";
   if (msg.includes("bye")) return "Goodbye! Have a great day!";
-  if (msg.includes("help")) return "I'm here to help! Just ask me anything.";
-  return "I am just a simple bot. You said — " + message;
+  if (msg.includes("help")) return "I'm here to help! Just type your question.";
+
+  // Time
+  if (msg.includes("time")) {
+    const now = new Date();
+    return "⏰ The current time is: " + now.toLocaleTimeString();
+  }
+
+  // Date
+  if (msg.includes("date")) {
+    const today = new Date();
+    return "📅 Today's date is: " + today.toLocaleDateString();
+  }
+
+  // Bot Identity
+  if (msg.includes("who are you") || msg.includes("your name")) {
+    return "🤖 I'm your friendly chatbot assistant. Built by Ahmad!";
+  }
+
+  return "I’m just a simple bot. You said — " + message;
 }
+
 function convertEmojis(text) {
   return text
     .replace(/:\)/g, "🙂")
