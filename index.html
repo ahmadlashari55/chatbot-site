@@ -1,23 +1,63 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>Chatbot</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SmartBot — AI Chat Assistant</title>
+  <link rel="stylesheet" href="style.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
 </head>
 <body>
-  <h1>My Chatbot</h1>
-  <button onclick="toggleDarkMode()">🌙 Toggle Dark Mode</button>
 
-<button onclick="downloadChat()">📥 Download Chat</button>
+  <div class="app-wrapper">
 
-  <div id="chatbox" class="chatbox"></div>
+    <!-- Header -->
+    <div class="chat-header">
+      <div class="bot-avatar">
+        <span class="avatar-icon">🤖</span>
+        <span class="status-dot"></span>
+      </div>
+      <div class="header-info">
+        <h1 class="bot-name" id="botName">SmartBot</h1>
+        <span class="bot-status">Online • Always ready</span>
+      </div>
+      <div class="header-actions">
+        <button class="icon-btn" onclick="toggleDarkMode()" title="Toggle Dark Mode">🌙</button>
+        <button class="icon-btn" onclick="clearChat()" title="Clear Chat">🗑️</button>
+        <button class="icon-btn" onclick="downloadChat()" title="Download Chat">💾</button>
+      </div>
+    </div>
 
-  <div class="input-area">
-    <input type="text" id="userInput" placeholder="Type your message..." onkeypress="handleKey(event)">
-    <button onclick="respond()">Send</button>
+    <!-- Chatbox -->
+    <div class="chatbox" id="chatbox"></div>
+
+    <!-- Quick Replies -->
+    <div class="quick-replies" id="quickReplies">
+      <button class="quick-btn" onclick="quickReply('Hello!')">👋 Hello</button>
+      <button class="quick-btn" onclick="quickReply('What time is it?')">⏰ Time</button>
+      <button class="quick-btn" onclick="quickReply('Tell me a joke')">😂 Joke</button>
+      <button class="quick-btn" onclick="quickReply('What can you do?')">💡 Help</button>
+    </div>
+
+    <!-- Input Area -->
+    <div class="input-area">
+      <input
+        type="text"
+        id="userInput"
+        placeholder="Type your message..."
+        onkeypress="handleKey(event)"
+        autocomplete="off"
+      />
+      <button class="send-btn" onclick="respond()">
+        <span>Send</span> ➤
+      </button>
+    </div>
+
   </div>
+
+  <!-- Sound toggle -->
+  <button class="sound-toggle" onclick="toggleSound()" title="Toggle Sound" id="soundBtn">🔔</button>
 
   <script src="script.js"></script>
 </body>
+</html>
